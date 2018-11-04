@@ -1,15 +1,19 @@
 {
-  "name": "ls",
+  "name": "townboy",
   "version": "1.0.0",
-  "description": "",
+  "description": "just an app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "bildo17",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "mongoose": "^5.3.9",
+    "nodemon": "^1.18.5",
+    "oath": "^1.0.0",
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.1.6"
   },

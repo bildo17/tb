@@ -1,6 +1,6 @@
 const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
-const keys = require("../config/keys.js");
+const keys = require("../config/dev.js");
 const mongoose = require("mongoose");
 const User = mongoose.model("Clients");
 //to get access to the client model class
@@ -21,8 +21,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "http://localhost:5000/auth/google/callback",
-      accessType: "offline"
+      callbackURL: keys.googleCallBackUrl,
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       //creating a new model instance of a User

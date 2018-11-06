@@ -1,5 +1,5 @@
 const express = require("express");
-const keys = require("./config/keys");
+const keys = require("./config/dev");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
@@ -20,8 +20,6 @@ app.use(passport.session());
 //connecting cookies to passport
 
 require("./routes/authRoutes.js")(app);
-
 mongoose.connect(keys.databaseID);
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

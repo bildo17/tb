@@ -8,6 +8,6 @@ const clientSchema = new Schema({
   googleID: String
 });
 
-mongoose.model("clients", clientSchema);
-//this function is meant to create the model class
+mongoose.model("Clients", clientSchema);
+//this function is meant to create a model class collection
 //the first input is teh name you want to give the collection.

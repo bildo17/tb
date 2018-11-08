@@ -2,7 +2,7 @@ const passport = require("passport");
 
 module.exports = app => {
   app.get("/", (req, res) => {
-    res.send("issa successfull deploy Bildo");
+    res.send("issa win");
   });
   app.get(
     "/auth/google",
@@ -19,6 +19,3 @@ module.exports = app => {
     res.send(req.User);
   });
 };
-
-// clientID 47054565510-0iul64ng2le7nvjd0obqhgfv9svhbqhp.apps.googleusercontent.com
-//clientSecret gYm4S5PaNNzSk1IzpKdfvY_P

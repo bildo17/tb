@@ -26,11 +26,10 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       //creating a new model instance of a User
-
-      // User.findOrCreate(googleID: profile.id (null, user) {
-      //   done(null, user);
-      //   });
-      // }
+      console.log(accessToken);
+      console.log(refreshToken);
+      console.log(profile);
+      // new User({ googleId: profile.id }).save();
       User.findOne({ googleID: profile.id }).then(existingUser => {
         if (existingUser) {
           done(null, existingUser);

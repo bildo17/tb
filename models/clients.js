@@ -5,9 +5,9 @@ const { Schema } = mongoose;
 
 const clientSchema = new Schema({
   //schema is meant to identify which properties will be included in a database's record
-  googleID: String
+  googleId: String
 });
 
 mongoose.model("Clients", clientSchema);
 //this function is meant to create a model class collection
-//the first input is teh name you want to give the collection.
+//the first input is the name you want to give the collection.

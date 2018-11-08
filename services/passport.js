@@ -8,11 +8,11 @@ const User = mongoose.model("Clients");
 //two arguments as is the case when creating a model class collection is when one wants to load something into mongoose.
 //the newly created object User is now our model class
 
-passport.serializeUser((User, done) => {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
-  User.findByID(id).then(User => {
+  User.findById(id).then(user => {
     done(null, user);
   });
 });
@@ -21,7 +21,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: keys.googleCallBackUrl,
+      callbackURL: "/auth/google/callback",
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
@@ -34,7 +34,7 @@ passport.use(
         if (existingUser) {
           done(null, existingUser);
         } else {
-          new user({ googleID: profile.id })
+          new User({ googleID: profile.id })
             .save()
             .then(user => done(null, user));
         }

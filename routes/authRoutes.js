@@ -16,6 +16,6 @@ module.exports = app => {
       res.redirect("/");
     });
   app.get("/api/client", (req, res) => {
-    res.send(req.existingUser);
+    res.send(req.user);
   });
 };

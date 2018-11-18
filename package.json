@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "townboydemo": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run townboydemo\" \"npm run client\""
   },
   "author": "bildo17",
   "license": "ISC",

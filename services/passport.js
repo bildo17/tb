@@ -4,7 +4,7 @@ const keys = require("../config/dev.js");
 const mongoose = require("mongoose");
 const User = mongoose.model("Clients");
 //to get access to the client model class
-//one argument inside the bracket means that i am trying to fetch something out of the mongoose
+//one argument inside the bracket means that i am trying to fetch something out of mongoose
 //two arguments as is the case when creating a model class collection is when one wants to load something into mongoose.
 //the newly created object User is now our model class
 
@@ -24,21 +24,14 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      //creating a new model instance of a User
-      console.log(accessToken);
-      console.log(refreshToken);
-      console.log(profile);
-      // new User({ googleId: profile.id }).save();
-      User.findOne({ googleID: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          new User({ googleID: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleID: profile.id });
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      // } else {
+      const user = await new User({ googleID: profile.id }).save();
+      return done(null, user);
     }
   )
 );

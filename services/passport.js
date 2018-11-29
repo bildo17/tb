@@ -11,11 +11,13 @@ const User = mongoose.model("Clients");
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
+
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
     done(null, user);
   });
 });
+
 passport.use(
   new OAuth2Strategy(
     {
@@ -29,7 +31,7 @@ passport.use(
       if (existingUser) {
         return done(null, existingUser);
       }
-      // } else {
+      //} else {
       const user = await new User({ googleID: profile.id }).save();
       return done(null, user);
     }

@@ -20,6 +20,16 @@ app.use(passport.session());
 //connecting cookies to passport
 
 require("./routes/authRoutes.js")(app);
+
+if (process.env.NODE_ENV === "production") {
+  //express will serve up js production assets from /client/build
+  app.use(express.static("/client/build"));
+  //express will serve up assets from index.html
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 mongoose.connect(keys.databaseID);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

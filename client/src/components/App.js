@@ -8,8 +8,6 @@ import * as actions from "../actions";
 
 const Contact = () => <h2>Contact</h2>;
 
-const Tester = () => <h2>Tester dashboard</h2>;
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();

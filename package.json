@@ -7,8 +7,7 @@
     "start": "node index.js",
     "townboydemo": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run townboydemo\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev": "concurrently \"npm run townboydemo\" \"npm run client\""
   },
   "author": "bildo17",
   "license": "ISC",
